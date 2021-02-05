@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2831803581
+    locked: 0
+  - name: Sprite
+    uniqueID: 4118586441
+    locked: 0

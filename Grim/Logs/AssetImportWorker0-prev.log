@@ -1,0 +1,99 @@
+Using pre-set license
+Built from '2020.2/release' branch; Version is '2020.2.2f1 (068178b99f32) revision 426360'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 18363.1198; Version 1909; 64bit' Language: 'en' Physical Memory: 16111 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2020.2.2f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/megan/Development/00-PROJECTS/Grim/Grim
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+63312
+Successfully changed project path to: C:/Users/megan/Development/00-PROJECTS/Grim/Grim
+C:/Users/megan/Development/00-PROJECTS/Grim/Grim
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 83.29 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.2f1 (068178b99f32)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/megan/Development/00-PROJECTS/Grim/Grim/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Intel(R) Iris(R) Plus Graphics 640 (ID=0x5926)
+    Vendor:   
+    VRAM:     8055 MB
+    Driver:   26.20.100.7986
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56184
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.2.2f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.005021 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 56.87 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.893 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.001899 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 86.05 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.203 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
+Refreshing native plugins compatible for Editor in 0.75 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1793 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 84.2 MB.
+System memory in use after: 84.2 MB.
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 2234.
+Total: 4.903200 ms (FindLiveObjects: 0.552700 ms CreateObjectMapping: 0.256500 ms MarkObjects: 3.631100 ms  DeleteObjects: 0.459700 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Tiny RPG Forest/Artwork/sprites/hero/walk/hero-walk-side-flipped/hero-walk-side-1.png
+  artifactKey: Guid(4ab85cc65f8b69d45aad2f0f6a8fdc7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiny RPG Forest/Artwork/sprites/hero/walk/hero-walk-side-flipped/hero-walk-side-1.png using Guid(4ab85cc65f8b69d45aad2f0f6a8fdc7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ab23d7a446a72452264d14f72f13a36') in 0.328229 seconds
+  Import took 0.335754 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.848346 seconds.
+  path: Assets/Tiny RPG Forest/Artwork/sprites/hero/walk/hero-walk-side-flipped/hero-walk-side-1.png
+  artifactKey: Guid(4ab85cc65f8b69d45aad2f0f6a8fdc7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiny RPG Forest/Artwork/sprites/hero/walk/hero-walk-side-flipped/hero-walk-side-1.png using Guid(4ab85cc65f8b69d45aad2f0f6a8fdc7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '941000fbf0c3dfe6961bc4a9ea24698a') in 0.036756 seconds
+  Import took 0.042996 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 12.126980 seconds.
+  path: Assets/Tiny RPG Forest/Artwork/sprites/hero/walk/hero-walk-side-flipped/hero-walk-side-2.png
+  artifactKey: Guid(90e258c6c557bbd479ea78a90b2d8bd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Tiny RPG Forest/Artwork/sprites/hero/walk/hero-walk-side-flipped/hero-walk-side-2.png using Guid(90e258c6c557bbd479ea78a90b2d8bd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4575231ee0dde22114de17a3905102d4') in 0.106488 seconds
+  Import took 0.116362 seconds .
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
