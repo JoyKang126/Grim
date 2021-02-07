@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator anim;
 
+    // Keep track of direction of most recent movement
+    private int isMovingX = 32;
+    private int isMovingY = 32;
+
     Vector2 movement;  // Vector2 stores an X and Y
 
     // Update is called once per frame
@@ -22,9 +26,46 @@ public class PlayerMovement : MonoBehaviour
         // Value between -1 (up arrow) to 1 (down arrow)
         movement.y = Input.GetAxisRaw("Vertical");
 
-        anim.SetFloat("Horizontal", movement.x);
-        anim.SetFloat("Vertical", movement.y);
-        anim.SetFloat("Speed", movement.sqrMagnitude);
+        if (movement != Vector2.zero)
+        {
+            // Only move in one direction (not diagonally)
+            if (isMovingX > 0)
+            {
+                if (isMovingX >= 32 && Mathf.Abs(movement.y) > 0.5f)
+                {
+                    movement.x = 0;
+                    isMovingX = 0;
+                    isMovingY = 1;
+                }
+                else
+                {
+                    movement.y = 0;
+                    isMovingX++;
+                }
+            }
+            else if (isMovingY > 0)
+            {
+                if (isMovingY >= 32 && Mathf.Abs(movement.x) > 0.5f)
+                {
+                    movement.y = 0;
+                    isMovingX = 1;
+                    isMovingY = 0;
+                }
+                else
+                {
+                    movement.x = 0;
+                    isMovingY++;
+                }
+            }
+
+            anim.SetFloat("moveX", movement.x);
+            anim.SetFloat("moveY", movement.y);
+            anim.SetBool("moving", true);
+        }
+        else
+        {
+            anim.SetBool("moving", false);
+        }
 
     }
 
