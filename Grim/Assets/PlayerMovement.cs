@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //controls
+    public KeyCode left;
+    public KeyCode right;
+    public KeyCode up;
+    public KeyCode down;
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
@@ -24,51 +29,44 @@ public class PlayerMovement : MonoBehaviour
         // Value between -1 (left arrow) to 1 (right arrow)
         if (!inDialogue())
         {
-            movement.x = Input.GetAxisRaw("Horizontal");
-
-            // Value between -1 (up arrow) to 1 (down arrow)
-            movement.y = Input.GetAxisRaw("Vertical");
-
-            if (movement != Vector2.zero)
+            if (Input.GetKey(left))
             {
-                // Only move in one direction (not diagonally)
-                if (isMovingX > 0)
-                {
-                    if (isMovingX >= 32 && Mathf.Abs(movement.y) > 0.5f)
-                    {
-                        movement.x = 0;
-                        isMovingX = 0;
-                        isMovingY = 1;
-                    }
-                    else
-                    {
-                        movement.y = 0;
-                        isMovingX++;
-                    }
-                }
-                else if (isMovingY > 0)
-                {
-                    if (isMovingY >= 32 && Mathf.Abs(movement.x) > 0.5f)
-                    {
-                        movement.y = 0;
-                        isMovingX = 1;
-                        isMovingY = 0;
-                    }
-                    else
-                    {
-                        movement.x = 0;
-                        isMovingY++;
-                    }
-                }
-
-                anim.SetFloat("moveX", movement.x);
-                anim.SetFloat("moveY", movement.y);
-                anim.SetBool("moving", true);
+                movement.x = -1;
+                movement.y = 0;
+            }
+            else if (Input.GetKey(right))
+            {
+                movement.x = 1;
+                movement.y = 0;
             }
             else
             {
-                anim.SetBool("moving", false);
+                movement.x = 0;
             }
+
+
+            if (Input.GetKey(up))
+            {
+                movement.y = 1;
+                movement.x = 0;
+            }
+
+            else if (Input.GetKey(down))
+            {
+                movement.y = -1;
+                movement.x = 0;
+            }
+            else
+            {
+                movement.y = 0;
+            }
+
+           if (movement != Vector2.zero)
+            {
+                anim.SetFloat("Horizontal", movement.x);
+                anim.SetFloat("Vertical", movement.y);
+            }
+            anim.SetFloat("Speed", movement.sqrMagnitude);
         }
 
     }
