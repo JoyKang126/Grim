@@ -15,8 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
 
     // Keep track of direction of most recent movement
-    private int isMovingX = 32;
-    private int isMovingY = 32;
+
     private NPC_Controller npc;
 
     Vector2 movement;  // Vector2 stores an X and Y
