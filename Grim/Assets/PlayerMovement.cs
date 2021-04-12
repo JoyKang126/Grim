@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //controls
+    public KeyCode left;
+    public KeyCode right;
+    public KeyCode up;
+    public KeyCode down;
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
@@ -12,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     // Keep track of direction of most recent movement
     private int isMovingX = 32;
     private int isMovingY = 32;
+    private NPC_Controller npc;
 
     Vector2 movement;  // Vector2 stores an X and Y
 
@@ -21,50 +27,46 @@ public class PlayerMovement : MonoBehaviour
         // User Input
 
         // Value between -1 (left arrow) to 1 (right arrow)
-        movement.x = Input.GetAxisRaw("Horizontal");
-
-        // Value between -1 (up arrow) to 1 (down arrow)
-        movement.y = Input.GetAxisRaw("Vertical");
-
-        if (movement != Vector2.zero)
+        if (!inDialogue())
         {
-            // Only move in one direction (not diagonally)
-            if (isMovingX > 0)
+            if (Input.GetKey(left))
             {
-                if (isMovingX >= 32 && Mathf.Abs(movement.y) > 0.5f)
-                {
-                    movement.x = 0;
-                    isMovingX = 0;
-                    isMovingY = 1;
-                }
-                else
-                {
-                    movement.y = 0;
-                    isMovingX++;
-                }
+                movement.x = -1;
+                movement.y = 0;
             }
-            else if (isMovingY > 0)
+            else if (Input.GetKey(right))
             {
-                if (isMovingY >= 32 && Mathf.Abs(movement.x) > 0.5f)
-                {
-                    movement.y = 0;
-                    isMovingX = 1;
-                    isMovingY = 0;
-                }
-                else
-                {
-                    movement.x = 0;
-                    isMovingY++;
-                }
+                movement.x = 1;
+                movement.y = 0;
+            }
+            else
+            {
+                movement.x = 0;
             }
 
-            anim.SetFloat("moveX", movement.x);
-            anim.SetFloat("moveY", movement.y);
-            anim.SetBool("moving", true);
-        }
-        else
-        {
-            anim.SetBool("moving", false);
+
+            if (Input.GetKey(up))
+            {
+                movement.y = 1;
+                movement.x = 0;
+            }
+
+            else if (Input.GetKey(down))
+            {
+                movement.y = -1;
+                movement.x = 0;
+            }
+            else
+            {
+                movement.y = 0;
+            }
+
+           if (movement != Vector2.zero)
+            {
+                anim.SetFloat("Horizontal", movement.x);
+                anim.SetFloat("Vertical", movement.y);
+            }
+            anim.SetFloat("Speed", movement.sqrMagnitude);
         }
 
     }
@@ -77,5 +79,26 @@ public class PlayerMovement : MonoBehaviour
         // note: rb.position is a Vector2 coordinate
         // Multiply by Time.fixedDeltaTime to maintain consistency
         rb.MovePosition(rb.position + movement*moveSpeed*Time.fixedDeltaTime);
+    }
+
+    private bool inDialogue()
+    {
+        if(npc != null)
+            return npc.DialogueActive();
+        else
+            return false;
+    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "NPC")
+        {
+            npc = collision.gameObject.GetComponent<NPC_Controller>();
+            if(Input.GetKey(KeyCode.E))
+                npc.ActivateDialogue();
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        npc = null;
     }
 }
