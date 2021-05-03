@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
     {
         // User Input
 
+        anim.SetFloat("Horizontal", movement.x);
+        anim.SetFloat("Vertical", movement.y);
+        anim.SetFloat("Speed", movement.sqrMagnitude);
+
         // Value between -1 (left arrow) to 1 (right arrow)
         if (!inDialogue())
         {
@@ -59,13 +63,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 movement.y = 0;
             }
-
-           if (movement != Vector2.zero)
-            {
-                anim.SetFloat("Horizontal", movement.x);
-                anim.SetFloat("Vertical", movement.y);
-            }
-            anim.SetFloat("Speed", movement.sqrMagnitude);
         }
 
     }
