@@ -7,7 +7,7 @@ namespace DialogueSystem
     {
         public bool finished {get; protected set;}
         // Start is called before the first frame update
-        protected IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, float delay, AudioClip sound, float delayBetweenLines)
+        public IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, float delay, AudioClip sound, float delayBetweenLines)
         {
             textHolder.color = textColor;
             textHolder.font = textFont;

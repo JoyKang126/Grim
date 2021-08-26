@@ -5,11 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - NPC
+  - line1
+  - dialogueholder
+  - DrinkStation
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 
@@ -41,4 +44,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1404763751
+    locked: 0
+  - name: Furniture Back
+    uniqueID: 895325151
+    locked: 0
+  - name: Player
+    uniqueID: 2409770667
+    locked: 0
+  - name: Furniture Front
+    uniqueID: 843310313
     locked: 0
