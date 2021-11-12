@@ -7,7 +7,9 @@ using UnityEngine.UI;
 [Serializable]
 public class DialogueBehaviour : PlayableBehaviour
 {
-    //public string characterName;
+    public string characterName;
+	public string dialogueLine;
+    public int dialogueSize;
    	public string input;
     public Color textColor;
     public Font textFont;
@@ -32,8 +34,8 @@ public class DialogueBehaviour : PlayableBehaviour
 	public override void OnPlayableCreate(Playable playable)
 	{
 		director = (playable.GetGraph().GetResolver() as PlayableDirector);
-		line = GameObject.FindGameObjectWithTag("line1");
-		holder = GameObject.FindGameObjectWithTag("dialogueholder");
+		//line = GameObject.FindGameObjectWithTag("line1");
+		//holder = GameObject.FindGameObjectWithTag("dialogueholder");
 	}
 
 	public override void ProcessFrame(Playable playable, FrameData info, object playerData)
@@ -41,11 +43,11 @@ public class DialogueBehaviour : PlayableBehaviour
 		if(!clipPlayed
 			&& info.weight > 0f)
 		{
-			//UIManager.Instance.SetDialogue(characterName, dialogueLine, dialogueSize);
+			UIManager.Instance.SetDialogue(characterName, dialogueLine, dialogueSize);
 			//Text textholder = line.GetComponent<Text>();
 			//dialogueclass.WriteText(input, textholder, textColor, textFont, delay, sound, delayBetweenLines);
-			line.GetComponent<DialogueSystem.DialogueLine>().setContent(input, textColor, textFont,sound);
-			holder.gameObject.SetActive(true);
+			//line.GetComponent<DialogueSystem.DialogueLine>().setContent(input, textColor, textFont,sound);
+			//holder.gameObject.SetActive(true);
 
 			if(Application.isPlaying)
 			{
@@ -64,12 +66,12 @@ public class DialogueBehaviour : PlayableBehaviour
 		if(pauseScheduled)
 		{
 			pauseScheduled = false;
-			//GameManager.Instance.PauseTimeline(director);
-			director.playableGraph.GetRootPlayable(0).SetSpeed(0d);
+			GameManager.Instance.PauseTimeline(director);
+		}
+		else
+		{
+			UIManager.Instance.ToggleDialoguePanel(false);
 		}
 		clipPlayed = false;
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			director.playableGraph.GetRootPlayable(0).SetSpeed(1d);
-		}
 	}
 }

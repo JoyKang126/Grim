@@ -17,6 +17,14 @@ public class PlayerInteract : MonoBehaviour
             }
             
         }
+        if (collision.gameObject.tag == "NPC")
+        {
+            if (Input.GetKey(KeyCode.X))
+            {
+                Debug.Log("x");
+                collision.gameObject.GetComponent<NPC_Controller>().ActivateDialogue();
+            }
+        }
 
     }
 }
