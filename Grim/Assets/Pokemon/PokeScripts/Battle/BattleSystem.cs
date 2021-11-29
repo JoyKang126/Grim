@@ -14,27 +14,66 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHud enemyHud;
     [SerializeField] BattleDialogBox dialogBox;
 
+    [SerializeField] Image playerImage;
+    [SerializeField] Image enemyImage;
+
     BattleState state;
     int currentAction;  // 0 for fight, 1 for run
     int currentMove;    // 0, 1, 2, 3 respectively for each move
+
+    bool firstTime = true;  // play trainer animation during first play through
 
     /* Arrow keys for navigation, Return to choose selection */
 
     private void Start()
     {
-        StartCoroutine(SetupBattle());
+        StartCoroutine(SetupBattle()); 
+    }
+
+    public IEnumerator PlayTrainerAnimation()
+    {
+        yield return dialogBox.TypeDialog("Anna wants to battle!");
+        enemyImage.enabled = false;
+        enemyUnit.gameObject.GetComponent<Image>().enabled = true;
+        enemyHud.gameObject.SetActive(true);
+        enemyUnit.Setup();
+        enemyHud.SetData(enemyUnit.Unit);
+        yield return dialogBox.TypeDialog($"Anna sends out {enemyUnit.Unit.Base.Name}.");
+
+        yield return dialogBox.TypeDialog("Surely I'll beat her!");
+        playerImage.enabled = false;
+        playerUnit.gameObject.GetComponent<Image>().enabled = true;
+        playerHud.gameObject.SetActive(true);
+        playerUnit.Setup();
+        playerHud.SetData(playerUnit.Unit);
+        yield return dialogBox.TypeDialog($"Go {playerUnit.Unit.Base.Name}!");
+
+        yield return new WaitForSeconds(1f);
     }
 
     public IEnumerator SetupBattle()
     {
-        playerUnit.Setup();
-        enemyUnit.Setup();
-        playerHud.SetData(playerUnit.Unit);
-        enemyHud.SetData(enemyUnit.Unit);
+        if (firstTime)
+        {
+            enemyUnit.gameObject.GetComponent<Image>().enabled = false;
+            playerUnit.gameObject.GetComponent<Image>().enabled = false;
+            
+            enemyHud.gameObject.SetActive(false);
+            playerHud.gameObject.SetActive(false);
+
+            yield return PlayTrainerAnimation();
+            firstTime = false;
+        }
+        else
+        {
+            playerUnit.Setup();
+            enemyUnit.Setup();
+
+            playerHud.SetData(playerUnit.Unit);
+            enemyHud.SetData(enemyUnit.Unit);
+        }        
 
         dialogBox.SetMoveNames(playerUnit.Unit.Moves);
-
-        yield return dialogBox.TypeDialog($" A wild {enemyUnit.Unit.Base.Name} appeared.");
 
         ActionSelection();
     }
