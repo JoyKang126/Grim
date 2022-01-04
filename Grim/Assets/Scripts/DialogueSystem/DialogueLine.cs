@@ -31,12 +31,14 @@ namespace DialogueSystem
             textHolder.text = "";
             imageHolder.sprite = characterSprite;
             imageHolder.preserveAspect = true;
+            
         }
         private void OnEnable()
         {
             ResetLine();
             lineAppear = WriteText(input, textHolder, textColor, textFont, delay, sound, delayBetweenLines);
             StartCoroutine(lineAppear);
+            Debug.Log(input);
         }
 
         private void Update()
@@ -58,6 +60,15 @@ namespace DialogueSystem
             textHolder = GetComponentInParent<Text>();
             textHolder.text = "";
             finished = false;
+        }
+
+        public void setContent(string minput, Color mtextColor, Font mtextFont, AudioClip msound)
+        {
+            input = minput;
+            textColor = mtextColor;
+            textFont = mtextFont;
+            sound = msound;
+            
         }
     }
 }
