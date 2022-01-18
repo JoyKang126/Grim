@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/JoyceScene.unity
+    guid: e6f4a4b117012154ab3c339f235ae5cf
+  - enabled: 1
+    path: Assets/Scenes/SampleDrinks.unity
+    guid: 991f16cc86c27b746b6ca2d380b09f4d
   m_configObjects: {}

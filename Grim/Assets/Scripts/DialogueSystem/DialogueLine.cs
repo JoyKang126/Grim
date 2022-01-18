@@ -1,17 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace DialogueSystem
 {
     public class DialogueLine : DialogueBaseClass
     {
-        private Text textHolder;
+        private TextMeshProUGUI textHolder;
 
         [Header ("Text Options")]
         [SerializeField] private string input;
         [SerializeField] private Color textColor;
-        [SerializeField] private Font textFont;
+        [SerializeField] private TMP_FontAsset textFont;
 
         [Header ("Time Parameters")]
         [SerializeField] private float delay;
@@ -24,19 +25,28 @@ namespace DialogueSystem
         [SerializeField] private Sprite characterSprite;
         [SerializeField] private Image imageHolder;
 
+        [Header ("Character Name")]
+        [SerializeField] private string characterName;
+        [SerializeField] private TextMeshProUGUI nameHolder;
+
+
+
         private IEnumerator lineAppear;
         private void Awake()
         {
-            textHolder = GetComponent<Text>();
+            textHolder = GetComponent<TextMeshProUGUI>();
             textHolder.text = "";
             imageHolder.sprite = characterSprite;
             imageHolder.preserveAspect = true;
+            nameHolder.text = characterName;
+            
         }
         private void OnEnable()
         {
             ResetLine();
             lineAppear = WriteText(input, textHolder, textColor, textFont, delay, sound, delayBetweenLines);
             StartCoroutine(lineAppear);
+            Debug.Log(input);
         }
 
         private void Update()
@@ -55,9 +65,18 @@ namespace DialogueSystem
 
         private void ResetLine()
         {
-            textHolder = GetComponentInParent<Text>();
-            textHolder.text = "";
+            //textHolder = GetComponentInParent<Text>();
+            textHolder.SetText("");
             finished = false;
+        }
+
+        public void setContent(string minput, Color mtextColor, TMP_FontAsset mtextFont, AudioClip msound)
+        {
+            input = minput;
+            textColor = mtextColor;
+            textFont = mtextFont;
+            sound = msound;
+            
         }
     }
 }
