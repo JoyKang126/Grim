@@ -7,24 +7,27 @@ public class PlayerInteract : MonoBehaviour
 {
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "DrinkStation")
+        if (GameManager.Instance.gameMode == GameManager.GameMode.Gameplay)
         {
-            if (Input.GetKey(KeyCode.X))
+            if (collision.gameObject.tag == "DrinkStation")
             {
-                Debug.Log("x");
-                GameObject.Find("Drink Station").transform.GetChild(0).gameObject.SetActive(true);
-                GameManager.Instance.gameMode = GameManager.GameMode.DrinkMaking;
-            }
+                if (Input.GetKey(KeyCode.X))
+                {
+                    GameObject.Find("Drink Station").transform.GetChild(0).gameObject.SetActive(true);
+                    GameManager.Instance.gameMode = GameManager.GameMode.DrinkMaking;
+                }
             
-        }
-        if (collision.gameObject.tag == "NPC")
-        {
-            if (Input.GetKey(KeyCode.X))
+            }
+            if (collision.gameObject.tag == "NPC")
             {
-                Debug.Log("x");
-                collision.gameObject.GetComponent<NPC_Controller>().ActivateDialogue();
+                if (Input.GetKey(KeyCode.X))
+                {
+                    //call NPC's comparedrink function rather than the following function
+                    collision.gameObject.GetComponent<NPC_Controller>().ActivateDialogue();
+                }
             }
         }
+        
 
     }
 }
