@@ -34,8 +34,6 @@ public class DialogueBehaviour : PlayableBehaviour
 	public override void OnPlayableCreate(Playable playable)
 	{
 		director = (playable.GetGraph().GetResolver() as PlayableDirector);
-		//line = GameObject.FindGameObjectWithTag("line1");
-		//holder = GameObject.FindGameObjectWithTag("dialogueholder");
 	}
 
 	public override void ProcessFrame(Playable playable, FrameData info, object playerData)
@@ -44,10 +42,8 @@ public class DialogueBehaviour : PlayableBehaviour
 			&& info.weight > 0f)
 		{
 			UIManager.Instance.SetDialogue(characterName, dialogueLine, dialogueSize);
-			//Text textholder = line.GetComponent<Text>();
-			//dialogueclass.WriteText(input, textholder, textColor, textFont, delay, sound, delayBetweenLines);
-			//line.GetComponent<DialogueSystem.DialogueLine>().setContent(input, textColor, textFont,sound);
-			//holder.gameObject.SetActive(true);
+			//UIManager.Instance.line.GetComponent<DialogueSystem.DialogueLine>().setContent(input, textColor, textFont,sound);
+			UIManager.Instance.ToggleDialoguePanel(true);
 
 			if(Application.isPlaying)
 			{

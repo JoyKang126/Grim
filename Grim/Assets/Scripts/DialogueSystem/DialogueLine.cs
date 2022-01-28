@@ -44,6 +44,7 @@ namespace DialogueSystem
         private void OnEnable()
         {
             ResetLine();
+            nameHolder.text = characterName;
             lineAppear = WriteText(input, textHolder, textColor, textFont, delay, sound, delayBetweenLines);
             StartCoroutine(lineAppear);
             Debug.Log(input);
@@ -77,6 +78,12 @@ namespace DialogueSystem
             textFont = mtextFont;
             sound = msound;
             
+        }
+
+        public void SetLines(string minput, string mname)
+        {
+            input = minput;
+            characterName = mname;
         }
     }
 }
