@@ -6,7 +6,7 @@ using TMPro;
 
 public class UIManager : Singleton<UIManager>
 {
-    public TextMeshProUGUI charNameText, dialogueLineText;
+    public GameObject charNameText, dialogueLineText;
 	public GameObject dialoguePanel;
     // Start is called before the first frame update
     void Start()
@@ -17,15 +17,16 @@ public class UIManager : Singleton<UIManager>
     // Update is called once per frame
     public void SetDialogue(string charName, string lineOfDialogue, int sizeOfDialogue)
 	{
-		charNameText.SetText(charName);
-		dialogueLineText.SetText(lineOfDialogue);
-		dialogueLineText.fontSize = sizeOfDialogue;
+		//charNameText.SetText(charName);
+		dialogueLineText.GetComponent<DialogueSystem.DialogueLine>().SetLines(lineOfDialogue, charName);
+		//dialogueLineText.fontSize = sizeOfDialogue;
 
 		ToggleDialoguePanel(true);
 	}
 
     public void ToggleDialoguePanel(bool active)
 	{
+		Debug.Log("activate dialogue!");
 		dialoguePanel.SetActive(active);
 	}
 }
